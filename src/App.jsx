@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import Modal from "./components/Modal";
@@ -14,8 +14,8 @@ const [currentImageId, setCurrentImageId] = useState(null);
       <Modal
         currenImageId={currentImageId}
         setCurrentImageId={setCurrentImageId}
-        visible={modalVisible}
-        setVisible={setModalVisible}
+        modalVisible={modalVisible}
+        setModalVisible={setModalVisible}
       >
         <PhotoFeedback currentImageId={currentImageId}></PhotoFeedback>
       </Modal>

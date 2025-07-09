@@ -1,18 +1,15 @@
 import { useState } from "react";
-import axios from "axios";
+import postComment from "../API/postComment";
 const Form = ({ currentImageId, onCommentAdded }) => {
   const [formData, setFormData] = useState({
     comment: "",
   });
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (formData.comment.trim() !== "") {
       try {
-        const response = await axios.post(
-          `http://test-backend.itdelta.agency/api/image/${currentImageId}/comments`,
-          formData
-        );
-        console.log("Form data submitted successfully:", response.data);
+        await postComment(currentImageId, formData);
         onCommentAdded({
           id: Date.now(),
           author: "Aноним",
@@ -23,9 +20,10 @@ const Form = ({ currentImageId, onCommentAdded }) => {
         console.error(error);
       }
     } else {
-      alert("Введите текст");
+      alert("Write some text");
     }
   };
+
   return (
     <form
       onSubmit={(e) => {
@@ -48,7 +46,7 @@ const Form = ({ currentImageId, onCommentAdded }) => {
         </span>
         <button
           type="submit"
-          className="bg-indigo-600 rounded-md self-center text-xs h-8 w-13"
+          className="bg-indigo-600 rounded-md self-center text-xs h-8 w-13 mt-3"
         >
           Save
         </button>

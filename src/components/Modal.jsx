@@ -1,22 +1,22 @@
 const Modal = ({
-  visible,
-  setVisible,
+  modalVisible,
+  setModalVisible,
   children,
   setCurrentImageId,
 }) => {
   return (
     <div
       className={`fixed inset-0 flex justify-center items-center transition-colors ${
-        visible ? "visible bg-[#6B7280BF]/75" : "invisible"
+        modalVisible ? "visible bg-[#6B7280BF]/75" : "invisible"
       }`}
       onClick={() => {
-        setVisible(false);
+        setModalVisible(false);
         setCurrentImageId(null);
       }}
     >
       <div
         className={`bg-white rounded-md shadow p-6 transition-all ${
-          visible ? "scale-100 opacity-100" : "scale-125 opacity-0"
+          modalVisible ? "scale-100 opacity-100" : "scale-125 opacity-0"
         }`}
         onClick={(e) => e.stopPropagation()}
       >
